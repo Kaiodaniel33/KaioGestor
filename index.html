@@ -1,342 +1,183 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaio Daniel | Especialista em Vendas e Desenvolvimento Web</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
-                    colors: {
-                        brand: { 400: '#34d399', 500: '#10B981', 600: '#059669' }, 
-                        dark: { 950: '#020617', 900: '#0f172a', 800: '#1e293b', 700: '#334155' }
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { background-color: #020617; }
-        .text-glow { text-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
-        .gradient-text {
-            background: linear-gradient(to right, #34d399, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.1), 0 8px 10px -6px rgba(16, 185, 129, 0.1); }
-        
-        /* Animação de Slide-in para o Menu Móvel */
-        @media (max-width: 768px) {
-            #mobile-menu-overlay {
-                transition: transform 0.3s ease-out;
-            }
-            #mobile-menu-overlay.translate-x-full {
-                transform: translateX(100%);
-            }
-            #mobile-menu-overlay:not(.translate-x-full) {
-                transform: translateX(0);
-            }
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaio Daniel | Especialista em Vendas e Desenvolvimento Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #020617; /* Fundo super escuro */
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #34d399, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 </head>
-<body class="text-slate-200 antialiased selection:bg-brand-500 selection:text-white">
+<body class="text-slate-200 antialiased selection:bg-emerald-500 selection:text-white">
 
-    <nav class="fixed w-full bg-dark-950/80 backdrop-blur-lg z-50 border-b border-dark-800">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
-                        <a href="#" class="logo-link z-10">
-                <img src="image_12.png" alt="Logotipo Kaio Daniel" class="h-10 md:h-12 w-auto">
-            </a>
+    <nav class="fixed w-full bg-slate-950/90 backdrop-blur-lg z-50 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
+            
+            <a href="#" class="z-20">
+                <img src="image_12.png" alt="Logotipo Kaio Daniel" class="h-10 md:h-12 w-auto">
+            </a>
 
-                        <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-400">
-                <a href="#solucoes" class="hover:text-white transition-colors">Soluções</a>
-                <a href="#depoimentos" class="hover:text-white transition-colors">Resultados</a>
-                <a href="#sobre" class="hover:text-white transition-colors">Sobre o Especialista</a>
-            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-400">
+                <a href="#solucoes" class="hover:text-white transition-colors">Soluções</a>
+                <a href="#depoimentos" class="hover:text-white transition-colors">Resultados</a>
+                <a href="#sobre" class="hover:text-white transition-colors">Sobre o Especialista</a>
+            </div>
 
-                        <a href="https://wa.me/5544999873651" target="_blank" class="hidden md:inline-block bg-brand-500 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-[0_0_15px_rgba(16,185,129,0.4)] hover:shadow-[0_0_25px_rgba(16,185,129,0.6)]">
-                Falar com a Equipe
-            </a>
+            <a href="https://wa.me/5544999873651" target="_blank" class="hidden md:inline-block bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-lg shadow-emerald-500/30">
+                Falar com a Equipe
+            </a>
 
-                        <button id="menu-toggle" class="md:hidden text-white text-3xl focus:outline-none z-10">
-                <i class="fa-solid fa-bars toggle-bars"></i>
-                <i class="fa-solid fa-xmark toggle-x hidden"></i>
-                <span class="sr-only">Abrir Menu de Navegação</span>
-            </button>
-        </div>
+            <button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none z-20">
+                <i class="fa-solid fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
 
-                <div id="mobile-menu-overlay" class="md:hidden hidden fixed inset-x-0 top-0 pt-20 h-screen w-screen bg-dark-950/95 backdrop-blur-lg flex flex-col items-center space-y-8 text-lg font-medium p-6 border-b border-dark-800 translate-x-full">
-            <a href="#solucoes" class="text-slate-400 hover:text-white transition-colors mobile-link">Soluções</a>
-            <a href="#depoimentos" class="text-slate-400 hover:text-white transition-colors mobile-link">Resultados</a>
-            <a href="#sobre" class="text-slate-400 hover:text-white transition-colors mobile-link">Sobre o Especialista</a>
-            <a href="https://wa.me/5544999873651" target="_blank" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-3 rounded-full font-bold transition-all shadow-[0_0_15px_rgba(16,185,129,0.4)] hover:shadow-[0_0_25px_rgba(16,185,129,0.6)] mobile-link text-center w-full max-w-sm">
-                Falar com a Equipe
-            </a>
-        </div>
-    </nav>
+        <div id="mobile-menu" class="hidden absolute top-0 left-0 w-full h-screen bg-slate-950 flex flex-col items-center justify-center space-y-8 text-xl font-bold z-10">
+            <a href="#solucoes" class="mobile-link text-slate-300 hover:text-white">Soluções</a>
+            <a href="#depoimentos" class="mobile-link text-slate-300 hover:text-white">Resultados</a>
+            <a href="#sobre" class="mobile-link text-slate-300 hover:text-white">Sobre o Especialista</a>
+            <a href="https://wa.me/5544999873651" target="_blank" class="bg-emerald-500 text-white px-8 py-4 rounded-full w-4/5 text-center mt-6">
+                Falar com a Equipe
+            </a>
+        </div>
+    </nav>
 
-    <header class="relative pt-32 pb-20 px-6 md:pt-48 md:pb-32 flex flex-col md:flex-row items-center max-w-7xl mx-auto overflow-hidden">
-        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-500/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+    <header class="relative pt-32 pb-20 px-6 md:pt-48 md:pb-32 flex flex-col md:flex-row items-center max-w-7xl mx-auto">
+        <div class="md:w-3/5 text-center md:text-left z-10">
+            <div class="inline-block border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 font-bold px-4 py-1.5 rounded-full text-xs md:text-sm mb-6 uppercase tracking-widest">
+                🚀 Engenharia de Software + Tráfego Pago
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                O seu negócio não precisa de "likes". <br class="hidden xl:block">
+                Ele precisa de <span class="gradient-text">vendas diárias.</span>
+            </h1>
+            
+            <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto md:mx-0 mb-10">
+                Desenvolvo <strong>Landing Pages de altíssima conversão</strong> e gerencio campanhas no <strong>Google e Meta Ads</strong> para fazer o seu WhatsApp receber clientes qualificados todos os dias.
+            </p>
+            
+            <a href="https://wa.me/5544999873651" target="_blank" class="inline-block w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white text-lg font-bold py-4 px-8 rounded-full shadow-lg shadow-emerald-500/40 transition-transform hover:scale-105">
+                <i class="fa-brands fa-whatsapp text-2xl mr-3 align-middle"></i> Quero Escalar Minhas Vendas
+            </a>
+            <p class="text-sm text-slate-500 mt-6"><i class="fa-solid fa-shield-check text-emerald-500 mr-2"></i> Estratégia Validada em +100 Projetos</p>
+        </div>
 
-        <div class="md:w-3/5 text-center md:text-left z-10">
-            <div class="inline-block border border-brand-500/30 bg-brand-500/10 text-brand-400 font-bold px-4 py-1.5 rounded-full text-xs md:text-sm mb-6 md:mb-8 uppercase tracking-widest">
-                🚀 Engenharia de Software + Tráfego Pago
-            </div>
-            
-            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-6">
-                O seu negócio não precisa de "likes". <br class="hidden xl:block">
-                Ele precisa de <span class="gradient-text">vendas diárias.</span>
-            </h1>
-            
-            <p class="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto md:mx-0 mb-10 leading-relaxed">
-                Desenvolvo <strong>Landing Pages de altíssima conversão</strong> e gerencio campanhas no <strong>Google e Meta Ads</strong> para fazer o seu WhatsApp receber clientes qualificados todos os dias.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto justify-center md:justify-start">
-                <a href="https://wa.me/5544999873651" target="_blank" class="w-full sm:w-auto bg-brand-500 hover:bg-brand-600 text-white text-lg font-bold py-4 px-8 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.5)] transition-all hover:scale-105 flex items-center justify-center">
-                    <i class="fa-brands fa-whatsapp text-2xl mr-3"></i> Quero Escalar Minhas Vendas
-                </a>
-            </div>
-            <p class="text-sm text-slate-500 mt-6 flex items-center justify-center md:justify-start gap-2">
-                <i class="fa-solid fa-shield-check text-brand-500"></i> Estratégia Validada em +100 Projetos
-            </p>
-        </div>
+        <div class="md:w-2/5 mt-16 md:mt-0 flex justify-center z-10">
+            <img src="kaio.png" alt="Kaio Daniel - Especialista" class="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 object-cover rounded-[2rem] border border-slate-700 shadow-2xl">
+        </div>
+    </header>
 
-        <div class="md:w-2/5 mt-16 md:mt-0 flex justify-center z-10">
-            <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-[400px] md:h-[400px]">
-                <div class="absolute inset-0 bg-gradient-to-tr from-brand-500 to-blue-600 rounded-[2rem] transform rotate-6 opacity-30 blur-xl"></div>
-                <img src="kaio.png" alt="Kaio Daniel - Especialista" class="relative z-10 w-full h-full object-cover rounded-[2rem] border-2 border-dark-700 shadow-2xl">
-            </div>
-        </div>
-    </header>
+    <section id="depoimentos" class="py-20 px-6 max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-5xl font-bold text-center text-white mb-16">Resultados que geram <span class="text-emerald-500">impacto real.</span></h2>
+        
+        <div class="bg-slate-900 border border-slate-800 p-8 md:p-12 rounded-3xl mb-8 flex flex-col md:flex-row gap-8 items-center">
+            <div class="md:w-2/3">
+                <div class="flex text-yellow-400 text-xl mb-4">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-lg md:text-xl text-slate-300 font-medium italic mb-6">
+                    "O Kaio foi muito atencioso comigo, mandando relatórios da campanha todos os dias. <strong>Meu WhatsApp recebia mais de 50 mensagens todo santo dia!</strong> Investi muito dinheiro, mas o retorno com o Kaio foi absurdo.<br><br>
+                    Peço até desculpas por pedir para parar o anúncio, pois não consegui responder todas as pessoas. Agradeço mesmo, Deus abençoe!"
+                </p>
+                <div>
+                    <h4 class="text-white font-bold text-lg">Empreendedor Parceiro</h4>
+                    <p class="text-emerald-400 text-sm">Pausou campanhas por excesso de leads</p>
+                </div>
+            </div>
+            <div class="md:w-1/3 w-full bg-slate-950 p-6 rounded-2xl border border-slate-800 text-center">
+                <p class="text-slate-400 text-sm mb-2">Pico da Campanha</p>
+                <h3 class="text-5xl font-extrabold text-emerald-500 mb-1">+50</h3>
+                <p class="text-white font-semibold">Leads por dia</p>
+            </div>
+        </div>
+    </section>
 
-    <section id="depoimentos" class="py-20 px-6 max-w-7xl mx-auto relative z-10">
-        <h2 class="text-3xl md:text-5xl font-bold text-center text-white mb-16">Resultados que geram <span class="text-brand-500">impacto real.</span></h2>
-        
-        <div class="bg-gradient-to-br from-dark-900 to-dark-800 border border-brand-500/30 p-8 md:p-12 rounded-3xl shadow-[0_0_30px_rgba(16,185,129,0.05)] relative overflow-hidden mb-8">
-            <i class="fa-solid fa-quote-left text-8xl text-dark-800 absolute top-4 left-4 opacity-50"></i>
-            <div class="relative z-10 flex flex-col lg:flex-row gap-8 items-center">
-                <div class="lg:w-2/3">
-                    <div class="flex text-yellow-400 text-xl mb-6">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="text-lg sm:text-xl md:text-2xl text-slate-200 font-medium italic leading-relaxed mb-6">
-                        "O Kaio foi muito atencioso comigo, mandando relatórios da campanha todos os dias. <strong>Meu WhatsApp recebia mais de 50 mensagens todo santo dia!</strong> É claro que investi muito dinheiro, mas o retorno com o Kaio foi absurdo.<br><br>
-                        Agradeço muito e peço até desculpas por pedir para parar o anúncio, pois <strong>não consegui responder todas as pessoas</strong>. Mais arrumei o time e estamos evoluindo. Agradeço mesmo, Deus abençoe!"
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-14 h-14 bg-brand-500/20 rounded-full flex items-center justify-center border border-brand-500/50">
-                            <i class="fa-solid fa-building text-brand-400 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-bold text-lg">Empreendedor Parceiro</h4>
-                            <p class="text-brand-400 text-sm font-semibold">Teve que pausar as campanhas por excesso de leads</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/3 flex justify-center w-full">
-                    <div class="bg-dark-950 p-6 rounded-2xl border border-dark-800 text-center w-full shadow-inner">
-                        <p class="text-slate-400 text-sm mb-2">Pico da Campanha</p>
-                        <h3 class="text-5xl font-extrabold text-brand-500 mb-1">+50</h3>
-                        <p class="text-white font-semibold">Leads por dia</p>
-                        <div class="mt-4 pt-4 border-t border-dark-800">
-                            <span class="inline-block bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full animate-pulse">Alta Demanda</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section id="solucoes" class="py-20 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">A engenharia por trás do <span class="text-emerald-500">lucro.</span></h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 hover:-translate-y-1 transition-transform">
+                <i class="fa-solid fa-code text-4xl text-blue-500 mb-6 block"></i>
+                <h3 class="text-xl font-bold text-white mb-4">Páginas de Alta Conversão</h3>
+                <p class="text-slate-400 text-sm">Desenvolvimento limpo (HTML/CSS/JS). Sites responsivos projetados com copywriting e UX para reter visitantes.</p>
+            </div>
+            
+            <div class="bg-slate-900 p-8 rounded-3xl border border-emerald-500/50 hover:-translate-y-1 transition-transform">
+                <i class="fa-solid fa-bullseye text-4xl text-emerald-500 mb-6 block"></i>
+                <h3 class="text-xl font-bold text-white mb-4">Tráfego Pago (Ads)</h3>
+                <p class="text-slate-400 text-sm">Gestão de campanhas no Google e Meta Ads. Compro a atenção do seu cliente ideal pelo menor custo possível.</p>
+            </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-dark-900 border border-dark-800 p-8 rounded-3xl hover:border-dark-700 transition-colors">
-                <div class="flex text-yellow-400 text-sm mb-4">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <p class="text-slate-300 italic mb-6 text-sm sm:text-base">"Profissionalismo que não se encontra fácil. O Kaio recriou toda a nossa Landing Page do zero com um código impecável. O site antigo demorava para abrir e perdíamos clientes. Agora o site voa e as conversões aumentaram em mais de 40% na primeira semana de Tráfego Pago. Recomendo de olhos fechados!"</p>
-                <div class="flex items-center gap-3 mt-auto">
-                    <div class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center text-blue-400 font-bold">R</div>
-                    <div>
-                        <h4 class="text-white font-bold text-sm">Roberto Almeida</h4>
-                        <p class="text-slate-500 text-xs">E-commerce de Eletrônicos</p>
-                    </div>
-                </div>
-            </div>
+            <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 hover:-translate-y-1 transition-transform">
+                <i class="fa-solid fa-chart-pie text-4xl text-purple-500 mb-6 block"></i>
+                <h3 class="text-xl font-bold text-white mb-4">Análise de Dados</h3>
+                <p class="text-slate-400 text-sm">Não trabalhamos com achismos. Monitoro métricas de ponta a ponta para saber exatamente de onde vem o lucro.</p>
+            </div>
+        </div>
+    </section>
 
-            <div class="bg-dark-900 border border-dark-800 p-8 rounded-3xl hover:border-dark-700 transition-colors">
-                <div class="flex text-yellow-400 text-sm mb-4">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <p class="text-slate-300 italic mb-6 text-sm sm:text-base">"Estávamos gastando uma fortuna com anúncios locais sem ver retorno. O Kaio reestruturou nossas campanhas de Google Ads focando no público certo da nossa região. Finalmente começamos a receber orçamentos qualificados no WhatsApp. O trabalho de análise de dados dele fez toda a diferença para entendermos nosso lucro."</p>
-                <div class="flex items-center gap-3 mt-auto">
-                    <div class="w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 font-bold">M</div>
-                    <div>
-                        <h4 class="text-white font-bold text-sm">Mariana Costa</h4>
-                        <p class="text-slate-500 text-xs">Clínica de Estética</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="py-20 px-4">
+        <div class="max-w-4xl mx-auto bg-emerald-600 rounded-[2rem] p-8 md:p-16 text-center shadow-2xl">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Sua empresa suporta receber 50 clientes por dia?</h2>
+            <p class="text-emerald-100 text-lg mb-10">Minha agenda é limitada para manter o alto padrão de entrega.</p>
+            <a href="https://wa.me/5544999873651" target="_blank" class="inline-block bg-slate-950 text-white text-xl font-bold py-4 px-10 rounded-full hover:bg-black transition-colors w-full sm:w-auto">
+                <i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i> Falar com Kaio Agora
+            </a>
+        </div>
+    </section>
 
-    <section id="solucoes" class="py-24 max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">A engenharia por trás do <span class="text-brand-500">lucro.</span></h2>
-            <p class="text-slate-400 max-w-2xl mx-auto text-lg">Como eu conecto o seu produto ao bolso do cliente certo.</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-dark-900 p-8 sm:p-10 rounded-3xl border border-dark-800 transition-all duration-300 card-hover">
-                <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 border border-blue-500/20">
-                    <i class="fa-solid fa-code text-3xl text-blue-500"></i>
-                </div>
-                <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">Páginas de Alta Conversão</h3>
-                <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">Desenvolvimento limpo (HTML/CSS/JS). Sites responsivos projetados com copywriting e UX para não deixar nenhum visitante escapar.</p>
-            </div>
-            
-            <div class="bg-dark-900 p-8 sm:p-10 rounded-3xl border border-brand-500/50 relative transition-all duration-300 card-hover shadow-[0_0_30px_rgba(16,185,129,0.1)]">
-                <div class="absolute top-0 right-6 -translate-y-1/2 bg-brand-500 text-white text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full">O MAIS PROCURADO</div>
-                <div class="w-16 h-16 bg-brand-500/10 rounded-2xl flex items-center justify-center mb-6 border border-brand-500/20">
-                    <i class="fa-solid fa-bullseye text-3xl text-brand-500"></i>
-                </div>
-                <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">Tráfego Pago (Ads)</h3>
-                <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">Gestão de campanhas no Google e Meta Ads. Compro a atenção do seu cliente ideal pelo menor custo possível.</p>
-            </div>
+    <footer class="bg-slate-950 border-t border-slate-900 py-10 text-center">
+        <img src="image_12.png" alt="Logotipo Kaio Daniel" class="h-10 w-auto mx-auto mb-4">
+        <div class="flex justify-center space-x-6 mb-6">
+            <a href="https://www.linkedin.com/in/kaio-daniel-de-souza-da-costa" target="_blank" class="text-slate-500 hover:text-white text-2xl"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://instagram.com/kaiodanielx" target="_blank" class="text-slate-500 hover:text-white text-2xl"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <p class="text-slate-600 text-sm">&copy; 2026 Kaio Daniel. Todos os direitos reservados.</p>
+    </footer>
 
-            <div class="bg-dark-900 p-8 sm:p-10 rounded-3xl border border-dark-800 transition-all duration-300 card-hover">
-                <div class="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-6 border border-purple-500/20">
-                    <i class="fa-solid fa-chart-pie text-3xl text-purple-500"></i>
-                </div>
-                <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">Análise de Dados</h3>
-                <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">Não trabalhamos com achismos. Monitoro métricas de ponta a ponta para saber exatamente de onde vem o seu lucro real.</p>
-            </div>
-        </div>
-    </section>
+    <a href="https://wa.me/5544999873651" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-3xl shadow-lg z-50">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-    <section id="sobre" class="py-20 border-y border-dark-800 bg-dark-900/50">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12 lg:gap-16">
-            <div class="w-full md:w-1/2 relative flex justify-center">
-                <div class="aspect-[4/5] w-full max-w-md bg-gradient-to-tr from-brand-600 to-dark-900 rounded-3xl p-1 relative overflow-hidden shadow-2xl shadow-brand-500/10">
-                    <div class="w-full h-full bg-dark-950 rounded-[23px] overflow-hidden">
-                        <img src="kaio.png" alt="Kaio Daniel" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity duration-500">
-                    </div>
-                </div>
-            </div>
-            <div class="w-full md:w-1/2 text-center md:text-left">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">O perfil técnico que o mercado <span class="text-brand-500">procura.</span></h2>
-                <div class="space-y-6 text-base md:text-lg text-slate-300 leading-relaxed">
-                    <p>
-                        Sou estudante de programação, Técnico em Desenvolvimento de Sistemas e atuo fortemente na área de Análise de Dados. 
-                    </p>
-                    <p>
-                        <strong>O que isso significa para o seu projeto?</strong> <br>
-                        A maioria dos gestores de tráfego não sabe construir a página que vai receber os anúncios. E a maioria dos programadores não entende de vendas. Eu uno a lógica limpa do código com a psicologia agressiva do Tráfego Pago.
-                    </p>
-                    <p>
-                        Meu compromisso não é apenas entregar um site bonito, é construir um ativo digital focado em conversão que gere dinheiro e previsibilidade para a sua empresa.
-                    </p>
-                </div>
-                <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
-                    <a href="https://www.linkedin.com/in/kaio-daniel-de-souza-da-costa" target="_blank" class="flex items-center gap-2 bg-[#0A66C2] hover:bg-[#004182] text-white px-5 py-2.5 rounded-lg font-semibold transition-colors">
-                        <i class="fa-brands fa-linkedin text-xl"></i> LinkedIn
-                    </a>
-                    <a href="https://instagram.com/kaiodanielx" target="_blank" class="flex items-center gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F56040] hover:opacity-90 text-white px-5 py-2.5 rounded-lg font-semibold transition-opacity">
-                        <i class="fa-brands fa-instagram text-xl"></i> kaiodanielx
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+        const links = document.querySelectorAll('.mobile-link');
 
-    <section id="contato" class="py-16 sm:py-24 px-4 sm:px-6">
-        <div class="max-w-5xl mx-auto bg-brand-500 rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 md:p-16 text-center relative overflow-hidden">
-            <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNmZmZmZmYiLz48L3N2Zz4=')]"></div>
-            
-            <div class="relative z-10">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">Sua empresa suporta receber 50 clientes por dia?</h2>
-                <p class="text-brand-950 font-medium text-base sm:text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-                    Se você tem estrutura para atender a demanda e quer escalar o seu faturamento, toque no botão abaixo. <strong>Minha agenda é limitada para manter o alto padrão de entrega.</strong>
-                </p>
-                <a href="https://wa.me/5544999873651" target="_blank" class="flex flex-col sm:flex-row items-center justify-center bg-dark-950 text-white text-lg sm:text-xl font-extrabold py-4 px-8 sm:px-10 rounded-full shadow-2xl hover:scale-105 hover:bg-black transition-all mx-auto w-fit">
-                    <i class="fa-brands fa-whatsapp text-brand-400 text-2xl sm:mr-3 mb-2 sm:mb-0"></i> Falar com Kaio Agora
-                </a>
-                <p class="text-brand-900 font-bold mt-6 text-sm">Agende uma análise estratégica gratuita.</p>
-            </div>
-        </div>
-    </section>
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
 
-    <footer class="bg-dark-950 border-t border-dark-900 py-12">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left logo-footer">
-                <img src="image_12.png" alt="Logotipo Kaio Daniel" class="h-8 md:h-10 w-auto mb-2 mx-auto md:mx-0">
-                <p class="text-slate-500 text-sm">Tecnologia, Dados e Performance.</p>
-            </div>
-            <div class="flex space-x-5">
-                <a href="https://www.linkedin.com/in/kaio-daniel-de-souza-da-costa" target="_blank" class="w-10 h-10 rounded-full bg-dark-900 flex items-center justify-center text-slate-400 hover:bg-[#0A66C2] hover:text-white transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://instagram.com/kaiodanielx" target="_blank" class="w-10 h-10 rounded-full bg-dark-900 flex items-center justify-center text-slate-400 hover:bg-[#E1306C] hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/5544999873651" target="_blank" class="w-10 h-10 rounded-full bg-dark-900 flex items-center justify-center text-slate-400 hover:bg-[#25D366] hover:text-white transition-all"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-6 text-center mt-10 text-slate-700 text-sm font-medium">
-            &copy; 2026 Kaio Daniel de Souza da Costa. Todos os direitos reservados.
-        </div>
-    </footer>
-
-    <a href="https://wa.me/5544999873651" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 sm:w-16 sm:h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:scale-110 transition-transform z-50 animate-pulse-slow">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-        <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-        const toggleBarsIcon = document.querySelector('.toggle-bars');
-        const toggleXIcon = document.querySelector('.toggle-x');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        // Função para fechar o menu
-        const closeMenu = () => {
-            mobileMenuOverlay.classList.add('translate-x-full');
-            setTimeout(() => {
-                mobileMenuOverlay.classList.add('hidden');
-            }, 300); // Aguarda a animação de slide-out terminar
-            toggleBarsIcon.classList.remove('hidden');
-            toggleXIcon.classList.add('hidden');
-        };
-
-        // Função para abrir o menu
-        const openMenu = () => {
-            mobileMenuOverlay.classList.remove('hidden');
-            // Pequeno atraso para permitir que o navegador processe a classe 'hidden' antes da animação
-            setTimeout(() => {
-                mobileMenuOverlay.classList.remove('translate-x-full');
-            }, 10);
-            toggleBarsIcon.classList.add('hidden');
-            toggleXIcon.classList.remove('hidden');
-        };
-
-        // Evento de clique no botão hambúrguer
-        menuToggle.addEventListener('click', () => {
-            if (mobileMenuOverlay.classList.contains('hidden')) {
-                openMenu();
-            } else {
-                closeMenu();
-            }
-        });
-
-        // Fechar o menu ao clicar em um link (para rolar para a seção)
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                closeMenu();
-            });
-        });
-    </script>
-
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
 </body>
 </html>
