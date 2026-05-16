@@ -1,6 +1,5 @@
 'use strict';
 
-// NAV: scroll class
 const navbar = document.getElementById('navbar');
 function handleNavScroll() {
     if (window.scrollY > 40) navbar.classList.add('scrolled');
@@ -9,9 +8,8 @@ function handleNavScroll() {
 window.addEventListener('scroll', handleNavScroll, { passive: true });
 handleNavScroll();
 
-// HAMBURGER MENU
-const hamburger   = document.getElementById('hamburger');
-const mobileMenu  = document.getElementById('mobileMenu');
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
 const mobileLinks = mobileMenu.querySelectorAll('.mobile-link, .btn-mobile-cta');
 
 hamburger.addEventListener('click', () => {
@@ -28,27 +26,10 @@ mobileLinks.forEach(link => {
     });
 });
 
-// INTERSECTION OBSERVER: reveal on scroll
-const revealEls = document.querySelectorAll('[data-reveal], [data-reveal-delay]');
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -60px 0px'
-});
-
-revealEls.forEach(el => revealObserver.observe(el));
-
-// SMOOTH SCROLL for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        if (href === '#') return; // Evita erro se o link for apenas '#'
+        if (href === '#') return;
         const target = document.querySelector(href);
         if (!target) return;
         e.preventDefault();
@@ -58,7 +39,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// COUNTER ANIMATION for stats
 function animateCounter(el, from, to, suffix, duration) {
     const start = performance.now();
     function step(timestamp) {
@@ -101,19 +81,13 @@ if (statsBar) {
     statsObserver.observe(statsBar);
 }
 
-// CARD STAGGER
-document.querySelectorAll('.cards-grid .card, .services-grid .service-card').forEach((card, i) => {
-    card.style.transitionDelay = `${i * 0.08}s`;
-});
-
-// ACTIVE NAV LINK
-const sections   = document.querySelectorAll('section[id], header[id]');
+const sections = document.querySelectorAll('section[id], header[id]');
 const navAnchors = document.querySelectorAll('.nav-links a');
 
 function highlightActiveNav() {
     const scrollY = window.scrollY + 120;
     sections.forEach(sec => {
-        const top    = sec.offsetTop;
+        const top = sec.offsetTop;
         const height = sec.offsetHeight;
         if (scrollY >= top && scrollY < top + height) {
             navAnchors.forEach(a => a.classList.remove('active'));
