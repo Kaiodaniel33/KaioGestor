@@ -1,7 +1,7 @@
 # Kaio S. Daniel | Ecossistemas Web & Tráfego Pago
 
 **Acesso ao site:**
-[ksdaniel.online](https://ksdaniel.online/?utm_source=chatgpt.com)
+https://ksdaniel.online/
 
 ---
 
@@ -129,10 +129,10 @@ A plataforma possui integração direcionada para conversão imediata via WhatsA
 # Contato e Redes Profissionais
 
 * **LinkedIn:**
-  [LinkedIn de Kaio Daniel](https://www.linkedin.com/in/kaio-daniel-de-souza-da-costa?utm_source=chatgpt.com)
+https://www.linkedin.com/in/kaio-daniel-de-souza-da-costa
 
 * **Instagram:**
-  [Instagram @kaiodanielx](https://www.instagram.com/kaiodanielx/?utm_source=chatgpt.com)
+  https://www.instagram.com/kaiodanielx/
 
 ---
 
